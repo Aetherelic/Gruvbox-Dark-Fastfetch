@@ -1,1 +1,172 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "builtin",
+    "source": "nixos",
+    "height": 14,
+    "padding": {
+      "top": 4,
+      "left": 3,
+      "right": 4
+    },
+    "color": {
+      "1": "#e9d9b3",
+      "2": "#689b69",
+      "3": "#458487",
+      "4": "#d89821",
+      "5": "#cb241d",
+      "6": "#e9d9b3"
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "color": {
+      "keys": "#e9d9b3",
+      "title": "#d89821"
+    }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;216;152;33m nixos\u001b[0m"
+    },
+    {
+      "type": "separator",
+      "string": "────────────────────────────"
+    },
 
+    {
+      "type": "os",
+      "key": "\u001b[38;2;233;217;179mOS        \u001b[0m"
+    },
+    {
+      "type": "command",
+      "key": "\u001b[38;2;233;217;179mVersion   \u001b[0m",
+      "text": "nixos-version"
+    },
+    {
+      "type": "kernel",
+      "key": "\u001b[38;2;233;217;179mKernel    \u001b[0m"
+    },
+    {
+      "type": "uptime",
+      "key": "\u001b[38;2;233;217;179mUptime    \u001b[0m"
+    },
+    {
+      "type": "shell",
+      "key": "\u001b[38;2;233;217;179mShell     \u001b[0m"
+    },
+    {
+      "type": "wm",
+      "key": "\u001b[38;2;233;217;179mWM        \u001b[0m"
+    },
+    {
+      "type": "terminal",
+      "key": "\u001b[38;2;233;217;179mTerminal  \u001b[0m"
+    },
+
+    {
+      "type": "separator",
+      "string": "────────────────────────────"
+    },
+
+    {
+      "type": "command",
+      "key": "\u001b[38;2;104;155;105mDisplay   \u001b[0m",
+      "text": "printf '2560x1440p @ 200Hz'"
+    },
+    {
+      "type": "command",
+      "key": "\u001b[38;2;104;155;105mMonitor   \u001b[0m",
+      "text": "hyprctl monitors | awk '/Monitor/ {m=$2} /focused: yes/ {print m; exit}'"
+    },
+    {
+      "type": "command",
+      "key": "\u001b[38;2;104;155;105mSession   \u001b[0m",
+      "text": "printf \"${XDG_SESSION_TYPE:-unknown} / ${XDG_CURRENT_DESKTOP:-unknown}\""
+    },
+    {
+      "type": "command",
+      "key": "\u001b[38;2;104;155;105mTheme     \u001b[0m",
+      "text": "printf 'Retro Nix'"
+    },
+
+    {
+      "type": "separator",
+      "string": "────────────────────────────"
+    },
+
+    {
+      "type": "cpu",
+      "key": "\u001b[38;2;69;132;135mCPU       \u001b[0m"
+    },
+    {
+      "type": "gpu",
+      "key": "\u001b[38;2;69;132;135mGPU       \u001b[0m"
+    },
+    {
+      "type": "command",
+      "key": "\u001b[38;2;69;132;135mDriver    \u001b[0m",
+      "text": "nvidia-smi --query-gpu=driver_version --format=csv,noheader 2>/dev/null || printf 'unknown'"
+    },
+    {
+      "type": "command",
+      "key": "\u001b[38;2;69;132;135mVRAM      \u001b[0m",
+      "text": "nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader,nounits 2>/dev/null | awk -F ', ' '{printf $1 \" MiB / \" $2 \" MiB\"}' || printf 'unknown'"
+    },
+    {
+      "type": "memory",
+      "key": "\u001b[38;2;69;132;135mRAM       \u001b[0m"
+    },
+
+    {
+      "type": "separator",
+      "string": "────────────────────────────"
+    },
+
+    {
+      "type": "disk",
+      "key": "\u001b[38;2;216;152;33mRoot      \u001b[0m",
+      "folders": "/"
+    },
+    {
+      "type": "command",
+      "key": "\u001b[38;2;216;152;33mHDD       \u001b[0m",
+      "text": "df -h /mnt/HDD1 2>/dev/null | awk 'NR==2 {print $3 \" / \" $2 \" (\" $5 \")\"}' || printf 'not mounted'"
+    },
+    {
+      "type": "packages",
+      "key": "\u001b[38;2;216;152;33mPkgs      \u001b[0m"
+    },
+    {
+      "type": "command",
+      "key": "\u001b[38;2;216;152;33mGen       \u001b[0m",
+      "text": "readlink /run/current-system | sed -E 's/.*nixos-system-[^-]+-//' | cut -d. -f1-3"
+    },
+
+    {
+      "type": "separator",
+      "string": "────────────────────────────"
+    },
+
+    {
+      "type": "localip",
+      "key": "\u001b[38;2;203;36;29mLocal IP  \u001b[0m"
+    },
+    {
+      "type": "command",
+      "key": "\u001b[38;2;203;36;29mAudio     \u001b[0m",
+      "text": "wpctl status | awk '/\\*.*Audio\\/Sink/ {sub(/.*\\. /, \"\"); print; exit}' || printf 'PipeWire'"
+    },
+    {
+      "type": "command",
+      "key": "\u001b[38;2;203;36;29mPlaying   \u001b[0m",
+      "text": "playerctl metadata --format '{{artist}} - {{title}}' 2>/dev/null || printf 'idle'"
+    },
+    {
+      "type": "command",
+      "key": "\u001b[38;2;203;36;29mTime      \u001b[0m",
+      "text": "date '+%H:%M • %A, %d/%m'"
+    }
+  ]
+}
