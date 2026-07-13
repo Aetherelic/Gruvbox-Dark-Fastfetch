@@ -52,7 +52,7 @@ Built for my personal NixOS setup — at least until I get bored of it within th
 
 <br>
 
-## 󰏗 Requirements
+## Requirements
 
 ### Required
 
@@ -167,7 +167,7 @@ Users on other distributions should remove or replace them.
 
 <br>
 
-## 󰆍 Usage
+## Usage
 
 Launch the configuration at any time with:
 
@@ -226,7 +226,6 @@ Suggestions, improvements and ports for other distributions are welcome.
 3. Make and test your changes.
 4. Open a pull request with a screenshot of the result.
 
-Please keep contributions consistent with the existing Gruvbox styling.
 
 <br>
 
@@ -234,7 +233,7 @@ Please keep contributions consistent with the existing Gruvbox styling.
 
 * [Fastfetch](https://github.com/fastfetch-cli/fastfetch) for the system-information tool
 * [Gruvbox](https://github.com/morhetz/gruvbox) for the iconic colour palette
-* The Linux ricing community for repeatedly convincing me that system information needs to be aesthetically pleasing
+
 
 <br>
 
@@ -248,7 +247,7 @@ You are free to use, modify and redistribute this configuration.
 
 <div align="center">
 
-### Made with 󰊤, NixOS and an unreasonable amount of terminal customisation.
+### Made with <3, NixOS and an unreasonable amount of terminal customisation.
 
 <br>
 
